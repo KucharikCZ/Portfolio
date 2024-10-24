@@ -1,12 +1,16 @@
-import toast from "react-hot-toast";
+import Swal,{SweetAlertIcon} from "sweetalert2";
 
-export default function AlertMsg(type:string,message:string){
-    switch(type){
-        case "success":
-            toast.success(message);
-            return;
-        case "error":
-            toast.error(message);
-            return;
-    }
+export default function AlertMsg(type:SweetAlertIcon,message:string){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+    });
+
+    Toast.fire({
+        icon: type,
+        title: message
+    });
 }
