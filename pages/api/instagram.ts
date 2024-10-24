@@ -22,7 +22,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
                     posts: cached
                 });
             }else{
-                const respon = await axios.get(process.env.INSTAGRAM_API || "");
+                const respon = await axios.get("https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&access_token=IGQWRNNWdmV3BpOFVBWlNOa2wyMG92M1pSUGIwUjYzNUQxZAV9xQlJvLXVDY3JlWlMzOV9rUHdZAZAVc3d1ZAucXVuQmI1NDUwVmM1S0FtYnBWd1RsWTRGbkRNeDdJRlRaTERZAY2pUWEh5clU3UDRNVFloV0FqWVdyZADQZD");
     
                 if(respon.status === 200){
                     cache.set(cacheKey, respon.data.data);
